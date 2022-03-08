@@ -1,0 +1,34 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: product
+  namespace: dscrimie
+  labels:
+    app: product
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'product:latest'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'openjdk-11:latest'
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/Almax84/springboot-keycloak.git'
+  triggers:
+    - type: GitHub
+      github:
+        secret: bQgvvL8D3L04aCjeEkGM
+    - type: Generic
+      generic:
+        secret: rZFO8aAKctNyfhi-HBOH
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange: {}
+  runPolicy: Serial
+

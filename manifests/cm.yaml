@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: product
+  namespace: dscrimie
+data:
+  kc_client: product-app
+  kc_realm: landmark
+  kc_role: default-roles-landmark
+  kc_url: 'https://keycloak-dscrimie.apps.lab01.gpslab.club/auth/'
+

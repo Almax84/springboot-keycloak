@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+
 @SpringBootApplication
 public class ProductAppApplication {
 
@@ -37,5 +38,7 @@ class ProductController {
 		request.logout();
 		return "/";
 	}
+
+
 
 }

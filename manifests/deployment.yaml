@@ -1,0 +1,33 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+  name: product
+  namespace: dscrimie
+  labels:
+    app: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: product
+  template:
+    metadata:
+      labels:
+        deployment: product
+    spec:
+      containers:
+        - name: product
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/dscrimie/product:latest
+          ports:
+            - containerPort: 8443
+              protocol: TCP
+            - containerPort: 8778
+              protocol: TCP
+            - containerPort: 8080
+              protocol: TCP
+          envFrom:
+             - configMapRef:
+                    name: product
+
